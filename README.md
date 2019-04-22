@@ -1,7 +1,7 @@
 # Workshop SQL
 Introducción al uso de SQL
 
-El presente curso tiene como propósito entregar conceptos iniciales en el uso de SQL para consultar Bases de Datos Relacionales. Al final del curso, el participante podrá construir sus propias consultas SQL básicas a conjuntos de datos determinados. Además, podrá utilizar Microsoft Access o Excel para realizar dichas consultas.
+El presente workshop tiene como propósito entregar conceptos iniciales en el uso de SQL para consultar Bases de Datos Relacionales. Al final del curso, el participante podrá construir sus propias consultas SQL básicas a conjuntos de datos determinados. Además, podrá utilizar Microsoft Access o Excel para realizar dichas consultas.
 
 Los objetivos son:
 
