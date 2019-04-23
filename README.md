@@ -72,6 +72,8 @@ Parte 7: Evaluación:
 
 a) Evaluación práctica de consultas de datos.
 
+################################################################################################################
+
 Consulta SQL desde Access:
 
 ![SQL_Acess](https://user-images.githubusercontent.com/5190215/56532314-891ab380-6523-11e9-87af-a4e646d45c6e.gif)
