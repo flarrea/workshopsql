@@ -177,3 +177,11 @@ LIMIT <number of tuples>;
 
 Puede ser usado con ORDER BY para obtener un valor máximo o mínimo
 
+Nota: Para usar en SQL Server se dbe remplazar por TOP (31)
+
+SELECT TOP (31) fname, lname, salary
+FROM employee
+ORDER BY salary, lname;
+
+Mostrará 31 registros.
+
