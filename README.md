@@ -14,6 +14,7 @@ Crear consultas SQL para extraer, visualizar, modificar o eliminar datos de una 
 Automatizar consultas básicas de SQL.
 Valorar el potencial creativo y profesional de la utilización de SQL.
 
+
 Preparación del entorno:
 
 Se utilizará sistema operativo Windows 10, MS Access y MS Excel, además de una base de datos de prueba.
