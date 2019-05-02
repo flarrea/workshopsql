@@ -1,0 +1,211 @@
+Comandos SQL Básicos 2
+
+
+Básicos
+
+USE sql_store;
+SELECT *
+FROM customers
+WHERE state = ‘CA’
+ORDER BY first_name
+LIMIT 3;
+
+• SQL no es un lenguaje case-sensitive.
+• En MySQL, cada línea debe terminar en punto y coma.
+
+
+Comentarios
+
+Usamos comentarios para agregar notas al código.
+—- Este comentario no será ejecutado.
+
+
+cláusula SELECT
+
+—- Usando expresiones
+
+SELECT (points * 10 + 20) AS discount_factor
+FROM customers
+
+Orden de operaciones:
+• Paréntesis
+• Multiplicación / división
+• Adición / Resta
+
+—- Eliminar duplicados
+
+SELECT DISTINCT state
+FROM customers
+WHERE Clause
+
+Se usa la cláusula WHERE para filtrar datos.
+
+Operadores de comparación:
+
+• Mayor que: >
+• Mayor que o igual: >=
+• Menor que: <
+• Menor que o igual: <=
+• Igual: =
+• No es igual: <>
+• No es igual: !=
+
+Operadores lógicos
+
+—- AND (ambas condiciones deben ser verdaderas)
+
+SELECT *
+FROM customers
+WHERE birthdate > ‘1990-01-01’ AND points > 1000
+
+—- OR (al menos una condición debe ser verdadera)
+
+SELECT *
+FROM customers
+WHERE birthdate > ‘1990-01-01’ OR points > 1000
+
+—- NOT (para negar una condición)
+
+SELECT *
+FROM customers
+WHERE NOT (birthdate > ‘1990-01-01’)
+
+Operador IN
+
+—- Devuelve clientes en cualquiera de estos estados: VA, NY, CA
+
+SELECT *
+FROM customers
+WHERE state IN (‘VA’, ‘NY’, ‘CA’)
+BETWEEN Operator
+
+SELECT *
+FROM customers
+WHERE points BETWEEN 100 AND 200
+
+Operador LIKE
+
+—- Devuelve clientes cuyo nombre comienza con b
+
+SELECT *
+FROM customers
+WHERE first_name LIKE ‘b%’
+
+• %: any number of characters
+• _: exactly one character
+
+Operador REGEXP
+
+—- Devuelve los clientes cuyo nombre comienza con un
+
+SELECT *
+FROM customers
+WHERE first_name REGEXP ‘^a’
+
+• ^: comienza con un string
+• $: termina con un string
+• |: lógico OR
+• [abc]: coincide con cualquier carácter individual
+• [a-d]: cualquier carácter de "a" a "d"
+
+Más ejemplos
+
+—- Devuelve los clientes cuyo nombre termina con EY o ON
+
+WHERE first_name REGEXP ‘ey$|on$’
+
+—- Devuelve clientes cuyo nombre comienza con MY
+—- o contiene SE
+
+WHERE first_name REGEXP ‘^my|se’
+
+—- Devuelve los clientes cuyo primer nombre contiene B seguido de
+—- R o U
+
+WHERE first_name REGEXP ‘b[ru]’
+
+Operador IS NULL
+
+—- Devuelve a los clientes que no tienen un número de teléfono
+
+SELECT *
+FROM customers
+WHERE phone IS NULL
+ORDER BY Clause
+
+—- Ordenar clientes por estado (en orden ascendente), y luego
+—- por su primer nombre (en orden descendente)
+
+SELECT *
+FROM customers
+ORDER BY state, first_name DESC
+LIMIT Clause
+
+—- Devuelve solo 3 clientes
+
+SELECT *
+FROM customers
+LIMIT 3
+
+—- Salta 6 clientes y devuelve 3
+
+SELECT *
+FROM customers
+LIMIT 6, 3
+
+Inner Joins
+
+SELECT *
+FROM customers c
+JOIN orders o
+ON c.customer_id = o.customer_id
+
+Outer Joins
+
+—- Devolver a todos los clientes si tienen algún pedido o no
+
+SELECT *
+FROM customers c
+LEFT JOIN orders o
+ON c.customer_id = o.customer_id
+
+Cláusula USING
+
+Si los nombres de las columnas son exactamente iguales, puede simplificar la unión (join) con la cláusula USING.
+
+SELECT *
+FROM customers c
+JOIN orders o
+USING (customer_id)
+
+Cross Joins
+
+—- Combina todos los colores con todos los tamaños.
+
+SELECT *
+FROM colors
+CROSS JOIN sizes
+
+Unions
+
+—- Combinar registros de múltiples conjuntos de resultados
+
+SELECT name, address
+FROM customers
+UNION
+SELECT name, address
+FROM clients
+
+Inserting Data
+
+—- Insertar un solo registro
+
+INSERT INTO customers(first_name, phone, points)
+VALUES (‘Mosh’, NULL, DEFAULT)
+
+—- Insertar múltiples registros individuales
+
+INSERT INTO customers(first_name, phone, points)
+VALUES
+(‘Mosh’, NULL, DEFAULT),
+(‘Bob’, ‘1234’, 10)
