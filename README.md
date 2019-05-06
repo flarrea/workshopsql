@@ -87,4 +87,4 @@ Consulta SQL desde Excel:
 
 ######################################################################################
 
-[Práctica 01](https://github.com/user/repo/blob/branch/other_file.md)
+[SQL Básicos 01](https://github.com/flarrea/workshopsql/blob/master/sql_basicos)
