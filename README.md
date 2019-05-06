@@ -19,55 +19,55 @@ Descripción del módulo:
 
 Parte 1: 
 
-a) Introducción a las bases de datos relacionales.
-b) Introducción a la utilización de SQL.
+a) Introducción a las bases de datos relacionales.<br>
+b) Introducción a la utilización de SQL.<br>
 
 Parte 2: 
 
-a) Tipos de sentencias básicas SQL.
-b) Componentes sintácticos de SQL.
-d) Sentencias DQL(Data Query Language: SELECT).
-e) Sentencias DML(Manipulación de Datos: INSERT, DELETE y UPDATE).
+a) Tipos de sentencias básicas SQL.<br>
+b) Componentes sintácticos de SQL.<br>
+d) Sentencias DQL(Data Query Language: SELECT).<br>
+e) Sentencias DML(Manipulación de Datos: INSERT, DELETE y UPDATE).<br>
 
 Parte 3:
 
-a) Clientes SQL.
-b) Importar datos a MS Access y MS Excel
+a) Clientes SQL.<br>
+b) Importar datos a MS Access y MS Excel.<br>
 
 Parte 4:
 
-a) Consultas DQL: SELECT.
-b) Consultas DML: INSERT.
-c) Consultas DML: DELETE.
-d) Consultas DML: UPDATE.
+a) Consultas DQL: SELECT.<br>
+b) Consultas DML: INSERT.<br>
+c) Consultas DML: DELETE.<br>
+d) Consultas DML: UPDATE.<br>
 
 Parte 5:
 
-a) Modificador condicional: WHERE.
-b) Modificador selector: *.
-c) Modificador: DISTINCT.
-d) Operador de comparación.
-e) Operador aritmético.
-f) Operador lógico.
-g) Operador sobre cadena de caracteres.
-h) Operador de pertenencia.
-i) Operador Simple String Pattern Matching.
-j) Operador nulo.
-k) Operador ORDER BY
-l) Operador LIMIT
+a) Modificador condicional: WHERE.<br>
+b) Modificador selector: *.<br>
+c) Modificador: DISTINCT.<br>
+d) Operador de comparación.<br>
+e) Operador aritmético.<br>
+f) Operador lógico.<br>
+g) Operador sobre cadena de caracteres.<br>
+h) Operador de pertenencia.<br>
+i) Operador Simple String Pattern Matching.<br>
+j) Operador nulo.<br>
+k) Operador ORDER BY.<br>
+l) Operador LIMIT.<br>
 
 
 Parte 6:
 
-a) Consultas multitablas.
-b) Operador JOIN.
-c) Operador INNER JOIN.
-d) Operador ALIASING.
-f) Consultas anidadas.
+a) Consultas multitablas.<br>
+b) Operador JOIN.<br>
+c) Operador INNER JOIN.<br>
+d) Operador ALIASING.<br>
+f) Consultas anidadas.<br>
 
 Parte 7: Evaluación:
 
-a) Evaluación práctica de consultas de datos.
+a) Evaluación práctica de consultas de datos.<br>
 
 ######################################################################################
 
