@@ -86,3 +86,5 @@ Consulta SQL desde Excel:
 ![SQL_Excel](https://user-images.githubusercontent.com/5190215/56607375-65fd0c00-65d6-11e9-8ef7-d6e0f01f157a.gif)
 
 ######################################################################################
+
+[Práctica 01](https://github.com/user/repo/blob/branch/other_file.md)
