@@ -7,7 +7,7 @@ Los objetivos son:
 
 1. Conocer de forma básica el concepto de base de datos relacional.<br> 
 2. Conocer SQL. Identificar los tipos de sentencias básicas SQL y sus componentes sintácticos.<br>
-3. Conocer los clientes SQL que permiten consultar bases de datos. Importar tablas desde una base de datos a Access y Excel.<br>
+3. Conocer clientes SQL que permiten consultar e importar tablas desde una base de datos a Access y Excel.<br>
 4. Crear consultas SQL para extraer, visualizar, modificar o eliminar datos de una base de datos.<br>
 5. Automatizar consultas básicas de SQL. Valorar el potencial creativo y profesional de la utilización de SQL.<br>
 
