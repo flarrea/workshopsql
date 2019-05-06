@@ -88,3 +88,7 @@ Consulta SQL desde Excel:
 ######################################################################################
 
 [SQL Básicos 01](https://github.com/flarrea/workshopsql/blob/master/sql_basicos)
+
+[SQL Básicos 02](https://github.com/flarrea/workshopsql/blob/master/sql_basicos_2)
+
+[SQL Intermedio 01](https://github.com/flarrea/workshopsql/blob/master/sql_intermedios)
