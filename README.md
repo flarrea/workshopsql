@@ -5,11 +5,11 @@ El presente workshop tiene como propósito entregar conceptos iniciales en el us
 
 Los objetivos son:
 
-Conocer de forma básica el concepto de base de datos relacional. 
-Conocer SQL. Identificar los tipos de sentencias básicas SQL y sus componentes sintácticos.
-Conocer los clientes SQL que permiten consultar bases de datos. Importar tablas desde una base de datos a Access y Excel.
-Crear consultas SQL para extraer, visualizar, modificar o eliminar datos de una base de datos.
-Automatizar consultas básicas de SQL. Valorar el potencial creativo y profesional de la utilización de SQL.
+>Conocer de forma básica el concepto de base de datos relacional. 
+>Conocer SQL. Identificar los tipos de sentencias básicas SQL y sus componentes sintácticos.
+>Conocer los clientes SQL que permiten consultar bases de datos. Importar tablas desde una base de datos a Access y Excel.
+>Crear consultas SQL para extraer, visualizar, modificar o eliminar datos de una base de datos.
+>Automatizar consultas básicas de SQL. Valorar el potencial creativo y profesional de la utilización de SQL.
 
 Preparación del entorno:
 
