@@ -83,6 +83,12 @@ Consulta SQL desde Excel:
 
 ######################################################################################
 
+Consulta SQL desde Excel a una Base de Dtaos SQL Server remota:
+
+![SQL_Excel](https://user-images.githubusercontent.com/5190215/56607375-65fd0c00-65d6-11e9-8ef7-d6e0f01f157a.gif)
+
+######################################################################################
+
 [SQL Básicos 01](https://github.com/flarrea/workshopsql/blob/master/sql_basicos)
 
 [SQL Básicos 02](https://github.com/flarrea/workshopsql/blob/master/sql_basicos_2)
