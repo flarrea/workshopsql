@@ -89,6 +89,8 @@ Consulta SQL desde Excel a una Base de Dtaos SQL Server remota:
 
 ######################################################################################
 
+Ejemplos de Consultas SQL
+
 [SQL Básicos 01](https://github.com/flarrea/workshopsql/blob/master/sql_basicos)
 
 [SQL Básicos 02](https://github.com/flarrea/workshopsql/blob/master/sql_basicos_2)
