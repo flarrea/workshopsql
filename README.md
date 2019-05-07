@@ -85,7 +85,7 @@ Consulta SQL desde Excel:
 
 Consulta SQL desde Excel a una Base de Dtaos SQL Server remota:
 
-![SQL_Excel](https://user-images.githubusercontent.com/5190215/56607375-65fd0c00-65d6-11e9-8ef7-d6e0f01f157a.gif)
+![Excel_DB_Remoto](https://user-images.githubusercontent.com/5190215/57332307-7e961780-70e8-11e9-9ccb-7fbda7c9bbad.gif)
 
 ######################################################################################
 
