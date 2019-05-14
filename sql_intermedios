@@ -13,6 +13,17 @@ select cast('2019-05-20' as datetime) as fecha;
 select * from factura
 where factura.FAC_FECHA between (cast('2018-04-01' as datetime)) and (cast('2018-04-30' as datetime));
 
+--Para extraer desde Microsoft Query de Excel
+USE practicacompras
+SELECT * FROM factura
+WHERE FAC_FECHA BETWEEN '2018/05/01' AND '2018/05/30'
+
+--o
+USE practicacompras
+SELECT * FROM factura
+WHERE FAC_FECHA BETWEEN '20180501' AND '20180530'
+
+
 --Función de agregación count(*)
 select ((count(*))/2) from cliente;
 
