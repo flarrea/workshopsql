@@ -1,6 +1,45 @@
 ######################################################################################
 Comandos SQL Intemedios
+######################################################################################
 
+--Para descubrir tipos de datos
+SELECT COLUMN_NAME,DATA_TYPE
+FROM Information_Schema.Columns
+WHERE TABLE_NAME = 'CLIENTE';
+
+--Para extraer fechas
+select cast('2019-05-20' as datetime) as fecha;
+
+select * from factura
+where factura.FAC_FECHA between (cast('2018-04-01' as datetime)) and (cast('2018-04-30' as datetime));
+
+--Función de agregación count(*)
+select ((count(*))/2) from cliente;
+
+select COUNT(FAC_FECHA) as FechaMinima from FACTURA;
+
+
+--Función de agregación sum(expresión numérica)
+select sum(fp_cantidad) as total from FACTURA_PRODUCTO;
+
+--Función de agregación avg(expresión numérica)
+select avg(fp_cantidad) as promedio from FACTURA_PRODUCTO;
+
+--Función de agregación min(expresión)
+select min(fp_cantidad) as minimo from FACTURA_PRODUCTO;
+
+select min(FAC_FECHA) as FechaMinima from FACTURA;
+
+
+--Función de agregación max(expresión)
+select max(fp_cantidad) as maximo from FACTURA_PRODUCTO;
+
+select max(FAC_FECHA) as FechaMaxima from FACTURA;
+
+--Función de agregación stdev(expresión)
+select stdev(fp_cantidad) as desviacion from FACTURA_PRODUCTO
+
+######################################################################################
 insert into cliente values(1,'Pedro López');
 insert into cliente values(2,'Ana Lara');
 
