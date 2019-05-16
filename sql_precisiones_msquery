@@ -1,1 +1,32 @@
+######################################################################################
+Precisiones de comandos SQL en Microsoft Query
+######################################################################################
 
+--Para nombres de campos compuestos
+SELECT * FROM [Detalles de pedidos]
+
+SELECT * FROM [Compañías de envíos]
+
+--Para uso de fechas
+SELECT * FROM Empleados
+WHERE (FechaContratación = #1992-05-01#)
+
+SELECT * FROM Empleados
+WHERE (FechaContratación BETWEEN #1960-05-29# AND #1969-07-02#)
+
+SELECT * FROM Empleados
+WHERE (FechaNacimiento BETWEEN #1960-05-29# AND #1969-07-02#)
+
+--Para uso de Alias
+SELECT DESCUENTO  AS [MisDescuentos] FROM [Detalles de pedidos];
+
+--Para uso de GROUP BY
+SELECT CARGO , COUNT(*) AS [EMPLEADOS]
+    FROM EMPLEADOS
+GROUP BY CARGO
+
+--Para unso de HAVING 
+SELECT CARGO , COUNT(*) AS [EMPLEADOS]
+    FROM EMPLEADOS
+GROUP BY CARGO
+HAVING COUNT(*) > 1
