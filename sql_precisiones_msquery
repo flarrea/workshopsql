@@ -217,3 +217,79 @@ INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdP
 GROUP BY Clientes.IdCliente, Clientes.Ciudad
 
 ORDER BY (COUNT([Detalles de pedidos].Cantidad)) DESC
+
+13. Uniendo 4 tablas
+
+SELECT Clientes.IdCliente, Clientes.Ciudad,[Detalles de pedidos].Cantidad AS [CantidadPedidos]
+
+FROM ((Clientes
+
+INNER JOIN Pedidos ON Pedidos.IdCliente = Clientes.IdCliente)
+
+INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdPedido)
+
+INNER JOIN Productos ON Productos.IdProducto = [Detalles de pedidos].IdProducto
+
+
+14. Uniendo 4 tablas y ordenamos por las unidades en el pedido
+
+SELECT Clientes.IdCliente, Clientes.Ciudad,[Detalles de pedidos].Cantidad AS [CantidadPedidos],Productos.UnidadesEnPedido AS [Unidades por Pedido]
+
+FROM ((Clientes
+
+INNER JOIN Pedidos ON Pedidos.IdCliente = Clientes.IdCliente)
+
+INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdPedido)
+
+INNER JOIN Productos ON Productos.IdProducto = [Detalles de pedidos].IdProducto
+
+ORDER BY Productos.UnidadesEnPedido
+
+
+15. Uniendo 4 tablas y ordenamos por las unidades en el pedido de forma descendente, de mayor a menor
+
+SELECT Clientes.IdCliente, Clientes.Ciudad,[Detalles de pedidos].Cantidad AS [CantidadPedidos],Productos.UnidadesEnPedido AS [Unidades por Pedido]
+
+FROM ((Clientes
+
+INNER JOIN Pedidos ON Pedidos.IdCliente = Clientes.IdCliente)
+
+INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdPedido)
+
+INNER JOIN Productos ON Productos.IdProducto = [Detalles de pedidos].IdProducto
+
+ORDER BY Productos.UnidadesEnPedido DESC
+
+
+16. 
+
+SELECT Clientes.IdCliente, Clientes.Ciudad,COUNT([Detalles de pedidos].Cantidad) AS [TotalPedidos],Productos.UnidadesEnPedido AS [Unidades por Pedido]
+
+FROM ((Clientes
+
+INNER JOIN Pedidos ON Pedidos.IdCliente = Clientes.IdCliente)
+
+INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdPedido)
+
+INNER JOIN Productos ON Productos.IdProducto = [Detalles de pedidos].IdProducto
+
+GROUP BY Clientes.IdCliente, Clientes.Ciudad, Productos.UnidadesEnPedido
+
+ORDER BY (COUNT([Detalles de pedidos].Cantidad)) DESC
+
+
+17.
+
+SELECT Clientes.IdCliente, Clientes.Ciudad,SUM([Detalles de pedidos].Cantidad) AS [TotalPedidos],Productos.UnidadesEnPedido AS [Unidades por Pedido]
+
+FROM ((Clientes
+
+INNER JOIN Pedidos ON Pedidos.IdCliente = Clientes.IdCliente)
+
+INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdPedido)
+
+INNER JOIN Productos ON Productos.IdProducto = [Detalles de pedidos].IdProducto
+
+GROUP BY Clientes.IdCliente, Clientes.Ciudad, Productos.UnidadesEnPedido
+
+ORDER BY (SUM([Detalles de pedidos].Cantidad)) DESC
