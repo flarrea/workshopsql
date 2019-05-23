@@ -30,3 +30,168 @@ SELECT CARGO , COUNT(*) AS [EMPLEADOS]
     FROM EMPLEADOS
 GROUP BY CARGO
 HAVING COUNT(*) > 1
+
+--Para subconsultas
+SELECT
+NOMBREPRODUCTO, PRECIOUNIDAD,CANTIDADPORUNIDAD
+FROM PRODUCTOS
+WHERE PRECIOUNIDAD IN
+(SELECT PRECIOUNIDAD FROM PRODUCTOS WHERE PRECIOUNIDAD < 1000);
+
+
+SELECT * FROM Empleados
+WHERE FechaNacimiento IN (SELECT FechaNacimiento FROM Empleados WHERE FechaNacimiento BETWEEN #1960-05-29# AND #1970-07-02#);
+
+
+--Para INNER JOIN
+Problema: Se solicita seleccionar clientes, ciudades y pedidos, para saber de qué ciudades vienen más pedidos y productos.
+
+1.
+
+SELECT Clientes.IdCliente, Clientes.Ciudad
+
+FROM Clientes
+
+INNER JOIN Pedidos ON Pedidos.IdCliente = Clientes.IdCliente
+
+
+2.
+
+SELECT Clientes.IdCliente, Clientes.Ciudad,[Detalles de pedidos].Cantidad AS [CantidadPedidos]
+
+FROM (Clientes
+
+INNER JOIN Pedidos ON Pedidos.IdCliente = Clientes.IdCliente)
+
+INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdPedido
+
+
+3.
+
+SELECT Clientes.Ciudad, COUNT(*) AS [PedidosPorCiudad]
+
+FROM (Clientes
+
+INNER JOIN Pedidos ON Pedidos.IdCliente = Clientes.IdCliente)
+
+INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdPedido
+
+GROUP BY Clientes.Ciudad
+
+
+4.
+
+SELECT Clientes.IdCliente, Clientes.Ciudad, COUNT(*) AS [PedidosPorCiudad]
+
+FROM (Clientes
+
+INNER JOIN Pedidos ON Pedidos.IdCliente = Clientes.IdCliente)
+
+INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdPedido
+
+GROUP BY Clientes.IdCliente, Clientes.Ciudad
+
+
+5.
+
+SELECT Clientes.IdCliente, Clientes.Ciudad , [Detalles de pedidos].cantidad, COUNT(*) AS [PedidosPorCiudad]
+
+FROM (Clientes
+
+INNER JOIN Pedidos ON Pedidos.IdCliente = Clientes.IdCliente)
+
+INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdPedido
+
+GROUP BY Clientes.IdCliente, Clientes.Ciudad,[Detalles de pedidos].cantidad
+
+
+6.
+
+SELECT Clientes.IdCliente, Clientes.Ciudad , SUM([Detalles de pedidos].Cantidad) AS [Total]
+
+FROM (Clientes
+
+INNER JOIN Pedidos ON Pedidos.IdCliente = Clientes.IdCliente)
+
+INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdPedido
+
+GROUP BY Clientes.IdCliente, Clientes.Ciudad
+
+
+7.
+
+SELECT Clientes.IdCliente, Clientes.Ciudad , COUNT([Detalles de pedidos].Cantidad) AS [Total]
+
+FROM (Clientes
+
+INNER JOIN Pedidos ON Pedidos.IdCliente = Clientes.IdCliente)
+
+INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdPedido
+
+GROUP BY Clientes.IdCliente, Clientes.Ciudad
+
+
+8.
+
+SELECT Clientes.IdCliente, Clientes.Ciudad , SUM([Detalles de pedidos].Cantidad) AS [Total]
+
+FROM (Clientes
+
+INNER JOIN Pedidos ON Pedidos.IdCliente = Clientes.IdCliente)
+
+INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdPedido
+
+
+GROUP BY Clientes.IdCliente, Clientes.Ciudad
+
+ORDER BY Clientes.Ciudad
+
+
+9.
+
+SELECT Clientes.IdCliente, Clientes.Ciudad , SUM([Detalles de pedidos].Cantidad) AS [Total]
+
+FROM (Clientes
+
+INNER JOIN Pedidos ON Pedidos.IdCliente = Clientes.IdCliente)
+
+INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdPedido
+
+
+GROUP BY Clientes.IdCliente, Clientes.Ciudad
+
+ORDER BY (SUM([Detalles de pedidos].Cantidad)) DESC
+
+
+
+10.
+
+SELECT Clientes.IdCliente, Clientes.Ciudad , COUNT([Detalles de pedidos].Cantidad) AS [TotalPedidos]
+
+FROM (Clientes
+
+INNER JOIN Pedidos ON Pedidos.IdCliente = Clientes.IdCliente)
+
+INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdPedido
+
+
+GROUP BY Clientes.IdCliente, Clientes.Ciudad
+
+ORDER BY (COUNT([Detalles de pedidos].Cantidad)) DESC
+
+
+
+11. Completo
+
+SELECT Clientes.IdCliente, Clientes.Ciudad , COUNT([Detalles de pedidos].Cantidad) AS [TotalPedidos], SUM([Detalles de pedidos].Cantidad) AS [TotalProductos]
+
+FROM (Clientes
+
+INNER JOIN Pedidos ON Pedidos.IdCliente = Clientes.IdCliente)
+
+INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdPedido
+
+
+GROUP BY Clientes.IdCliente, Clientes.Ciudad
+
+ORDER BY (COUNT([Detalles de pedidos].Cantidad)) DESC
