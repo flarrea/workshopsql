@@ -195,3 +195,18 @@ INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdP
 GROUP BY Clientes.IdCliente, Clientes.Ciudad
 
 ORDER BY (COUNT([Detalles de pedidos].Cantidad)) DESC
+
+12. Completo, pero sólo 10 registros
+
+SELECT TOP 10 Clientes.IdCliente, Clientes.Ciudad , COUNT([Detalles de pedidos].Cantidad) AS [TotalPedidos], SUM([Detalles de pedidos].Cantidad) AS [TotalProductos]
+
+FROM (Clientes
+
+INNER JOIN Pedidos ON Pedidos.IdCliente = Clientes.IdCliente)
+
+INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdPedido
+
+
+GROUP BY Clientes.IdCliente, Clientes.Ciudad
+
+ORDER BY (COUNT([Detalles de pedidos].Cantidad)) DESC
