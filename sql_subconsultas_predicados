@@ -2,7 +2,7 @@
 Comandos SQL Intemedios Subconsultas Predicados
 ######################################################################################
 
-any/all
+ANY/ALL
 
 any y all son predicados de comparación, se utilizan para escribir subconsultas en la clausula where. Ambos comparan cada
 registro de la consulta principal con todos los registros de ls subconsulta.
@@ -25,7 +25,7 @@ solo EL registros id = 3 de la tabla T1 sería parte de los resultados de la con
 
 
 
-exists - not exists
+EXISTS - NOT EXISTS
 
 EXISTS evalúa en la subconsulta si existe algún registro que cumple con una o más condiciones, si esto es así, listará todos
 los registros de la consulta principal, de lo contrario, no listará nada.
@@ -54,7 +54,7 @@ FROM cliente
 WHERE NOT EXISTS (SELECT cliente.CLIENTE_EDAD FROM cliente WHERE cliente.CLIENTE_EDAD > 30)
 
 
-In/not In
+IN/NOT IN
 
 IN evalúa la pertenencia de un valor de campo de cada registro de la consulta principal entre el conjunto de valores del
 mismo campo de los registros obtenidos en la subsonsulta. NOT IN evalúa la NO pertenencia. Es útil para evitar consultas
