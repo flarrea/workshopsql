@@ -116,3 +116,42 @@ GROUP BY
 
 factura.FAC_ID,
 factura.FAC_FECHA
+
+SELECT
+factura.FAC_ID,
+factura.FAC_FECHA,
+
+SUM(factura_producto.FP_PRECIO*factura_producto.FP_CANTIDAD) AS TOTAL
+
+FROM factura
+
+INNER JOIN factura_producto ON factura_producto.FAC_ID = factura.FAC_ID
+
+GROUP BY
+
+factura.FAC_ID,
+factura.FAC_FECHA
+
+HAVING TOTAL > 13000
+
+
+Para SQL SERVER
+
+SELECT
+factura.FAC_ID AS ID,
+factura.FAC_FECHA AS FECHA,
+
+SUM(factura_producto.FP_PRECIO*factura_producto.FP_CANTIDAD) AS TOTAL
+
+FROM factura
+
+INNER JOIN factura_producto ON factura_producto.FAC_ID = factura.FAC_ID
+
+GROUP BY
+
+factura.FAC_ID,
+factura.FAC_FECHA
+
+HAVING SUM(factura_producto.FP_PRECIO*factura_producto.FP_CANTIDAD) > 13000
+
+ORDER BY factura.FAC_FECHA DESC;
