@@ -109,3 +109,6 @@ EJEMPLO
 SELECT NOMBRE, APELLIDO, TELEFONO
 FROM CLIENTE
 WHERE EDAD=(SELECT MAX(EDAD) FROM CLIENTE);
+
+
+*Considere que las funciones de agregación son: sum, count, min, max y avg
