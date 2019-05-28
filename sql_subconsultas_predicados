@@ -1,0 +1,111 @@
+######################################################################################
+Comandos SQL Intemedios Subconsultas Predicados
+######################################################################################
+
+any/all
+
+any y all son predicados de comparación, se utilizan para escribir subconsultas en la clausula where. Ambos comparan cada
+registro de la consulta principal con todos los registros de ls subconsulta.
+any requiere que la comparación de un registro de la consulta principal con todos los los registros de la subconsulta, al
+menos uno sea verdadero. Esto permitirá que el registro de la consulta principal sea parte de los resultados de la consulta.
+
+SELECT t1.T1_ELEMENTO
+from t1
+WHERE t1.T1_ELEMENTO >= ANY (SELECT t2.T2_ELEMENTO from t2)
+
+solo los registros id = 2 e id = 3 de la tabla T1 serían parte de los resultados de la consulta
+ALL requiere que la comparación de un registro de la consulta principal con todos los los registros de la subconsulta, sean
+todas verdaderas. Esto permitirá que el registro de la consulta principal sea parte de los resultados de la consulta.
+
+SELECT t1.T1_ELEMENTO
+from t1
+WHERE t1.T1_ELEMENTO >= ALL (SELECT t2.T2_ELEMENTO from t2)
+
+solo EL registros id = 3 de la tabla T1 sería parte de los resultados de la consulta.
+
+
+
+exists - not exists
+
+EXISTS evalúa en la subconsulta si existe algún registro que cumple con una o más condiciones, si esto es así, listará todos
+los registros de la consulta principal, de lo contrario, no listará nada.
+Ejemplo: un gerente dice: "me interesa revisar la lista de mis clientes (todos) siempre y cuando haya alguno con edad mayor
+a 30, sino, no me interesa revisarla."
+
+SELECT *
+FROM cliente
+WHERE EXISTS (SELECT cliente.CLIENTE_EDAD FROM cliente WHERE cliente.CLIENTE_EDAD > 30)
+
+Según los datos de prueba con los que estamos trabajando, existen clientes con edades mayores a 30, entonces esta
+consulta listará toda la lista de los clientes.
+
+SELECT *
+FROM cliente
+WHERE EXISTS (SELECT cliente.CLIENTE_EDAD FROM cliente WHERE cliente.CLIENTE_EDAD > 40)
+
+Según los datos de prueba con los que estamos trabajando, NO existen clientes con edades mayores a 40, entonces esta
+consulta no listará ningún cliente.
+
+Si me interesara revisar la lista de clientes siempre y cuando NO Existan clientes con edad mayor a 30, debería usar NOT
+
+EXISTS
+SELECT *
+FROM cliente
+WHERE NOT EXISTS (SELECT cliente.CLIENTE_EDAD FROM cliente WHERE cliente.CLIENTE_EDAD > 30)
+
+
+In/not In
+
+IN evalúa la pertenencia de un valor de campo de cada registro de la consulta principal entre el conjunto de valores del
+mismo campo de los registros obtenidos en la subsonsulta. NOT IN evalúa la NO pertenencia. Es útil para evitar consultas
+con múltiples condiciones de igualdad. Como se muestra en el siguiente ejemplo (ambas consultas con equivalentes en sus
+resultados).
+
+SELECT*
+from cliente
+WHERE
+cliente.CLIENTE_NOMBRE = 'cliente2' OR
+cliente.CLIENTE_NOMBRE = 'cliente3' OR
+cliente.CLIENTE_NOMBRE = 'cliente4' OR
+cliente.CLIENTE_NOMBRE = 'cliente5' OR
+
+SELECT*
+from cliente
+WHERE cliente.CLIENTE_NOMBRE IN ('cliente2', 'cliente3','cliente4','cliente5')
+
+Si necesitamos a los clientes que NO se llaman 'cliente2', 'cliente3','cliente4','cliente5', se utilizaría NOT IN
+
+SELECT*
+from cliente
+WHERE cliente.CLIENTE_NOMBRE NOT IN ('cliente2', 'cliente3','cliente4','cliente5')
+
+Otro ejemplo, utilizando el modelo dispuesto en el aula es "seleccione el nombre, apellido y edad de los clientes que han
+comprado entre el 2013-01-01 y el 2014-01-01
+
+SELECT
+cliente.CLIENTE_NOMBRE,
+cliente.CLIENTE_APELLIDO,
+cliente.CLIENTE_EDAD
+FROM cliente
+WHERE cliente.CLIENTE_ID IN (SELECT factura.CLIENTE_ID FROM factura WHERE factura.FACTURA_FECHA >= '2013-
+01-01' AND factura.FACTURA_FECHA <= '2014-01-01')
+
+SELECT
+cliente.CLIENTE_NOMBRE,
+cliente.CLIENTE_APELLIDO,
+cliente.CLIENTE_EDAD
+FROM cliente
+WHERE cliente.CLIENTE_ID IN (SELECT factura.CLIENTE_ID FROM factura WHERE factura.FACTURA_FECHA
+BETWEEN '2013-01-01' AND '2014-01-01')
+
+ambas consultas son equivalentes en términos del uso de IN, solo se diferencian en el recurso utilizado para establacer la
+condición del where de la subconsulta, la primera utiliza dos condiciones operadas con AND y la segunda utiliza la
+cláusula BETWEEN (entre). Esta cláusula trabaja con intervalo cerrado (incluye los límites)
+
+
+subConsultasFuncionesAgregacion
+
+EJEMPLO
+SELECT NOMBRE, APELLIDO, TELEFONO
+FROM CLIENTE
+WHERE EDAD=(SELECT MAX(EDAD) FROM CLIENTE);
