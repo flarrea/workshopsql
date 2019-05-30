@@ -1,0 +1,75 @@
+######################################################################################
+Ejercicios de comandos SQL en Microsoft Query
+######################################################################################
+Generar consultas a la base de datos NEPTUNO, para resolver las siguientes problemáticas
+######################################################################################
+
+1. Total de pedidos de cada empleado:
+
+SELECT Empleados.IdEmpleado, Empleados.Nombre , COUNT([Detalles de pedidos].Cantidad) AS [TotalPedidosEmpleado]
+
+FROM (Empleados
+
+INNER JOIN Pedidos ON Empleados.IdEmpleado = Pedidos.IdEmpleado)
+
+INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdPedido
+
+
+GROUP BY Empleados.IdEmpleado, Empleados.Nombre
+
+ORDER BY (COUNT([Detalles de pedidos].Cantidad)) DESC
+
+
+##############################################################
+
+2. Total de pedidos de cada empleado y total de productos:
+
+SELECT Empleados.IdEmpleado, Empleados.Nombre , COUNT([Detalles de pedidos].Cantidad) AS [TotalPedidosEmpleado], SUM([Detalles de pedidos].Cantidad) AS [TotalProductos]
+
+FROM (Empleados
+
+INNER JOIN Pedidos ON Empleados.IdEmpleado = Pedidos.IdEmpleado)
+
+INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdPedido
+
+
+GROUP BY Empleados.IdEmpleado, Empleados.Nombre
+
+ORDER BY (COUNT([Detalles de pedidos].Cantidad)) DESC
+
+
+#############################################################################
+
+3. Total de venta de cada empleado:
+
+SELECT Empleados.IdEmpleado, Empleados.Nombre, SUM([Detalles de pedidos].Cantidad * [Detalles de pedidos].PrecioUnidad) AS [TotalVenta]
+
+FROM (Empleados
+
+INNER JOIN Pedidos ON Empleados.IdEmpleado = Pedidos.IdEmpleado)
+
+INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdPedido
+
+GROUP BY Empleados.IdEmpleado, Empleados.Nombre
+
+ORDER BY Empleados.IdEmpleado, Empleados.Nombre DESC
+
+
+#################################################################################
+
+4. Total de pedidos, productos y ventas por empleado:
+
+SELECT Empleados.IdEmpleado, Empleados.Nombre, COUNT([Detalles de pedidos].Cantidad) AS [TotalPedidosEmpleado], SUM([Detalles de pedidos].Cantidad) AS [TotalProductos]
+,SUM([Detalles de pedidos].Cantidad * [Detalles de pedidos].PrecioUnidad) AS [TotalVenta]
+
+FROM (Empleados
+
+INNER JOIN Pedidos ON Empleados.IdEmpleado = Pedidos.IdEmpleado)
+
+INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdPedido
+
+GROUP BY Empleados.IdEmpleado, Empleados.Nombre
+
+ORDER BY Empleados.IdEmpleado, Empleados.Nombre DESC
+
+
