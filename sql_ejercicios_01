@@ -72,4 +72,62 @@ GROUP BY Empleados.IdEmpleado, Empleados.Nombre
 
 ORDER BY Empleados.IdEmpleado, Empleados.Nombre DESC
 
+#################################################################################
+
+5.El total de la venta mayor a 200000
+
+SELECT Empleados.IdEmpleado, Empleados.Nombre, COUNT([Detalles de pedidos].Cantidad) AS [TotalPedidosEmpleado], SUM([Detalles de pedidos].Cantidad) AS [TotalProductos]
+,SUM([Detalles de pedidos].Cantidad * [Detalles de pedidos].PrecioUnidad) AS [TotalVenta]
+
+FROM (Empleados
+
+INNER JOIN Pedidos ON Empleados.IdEmpleado = Pedidos.IdEmpleado)
+
+INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdPedido
+
+GROUP BY Empleados.IdEmpleado, Empleados.Nombre
+
+HAVING (SUM([Detalles de pedidos].Cantidad * [Detalles de pedidos].PrecioUnidad)) > 200000
+
+ORDER BY Empleados.IdEmpleado, Empleados.Nombre DESC
+
+#################################################################################
+
+6. Cantidad de pedidos mayor a 1000
+
+SELECT Empleados.IdEmpleado, Empleados.Nombre, COUNT([Detalles de pedidos].Cantidad) AS [TotalPedidosEmpleado], SUM([Detalles de pedidos].Cantidad) AS [TotalProductos]
+,SUM([Detalles de pedidos].Cantidad * [Detalles de pedidos].PrecioUnidad) AS [TotalVenta]
+
+FROM (Empleados
+
+INNER JOIN Pedidos ON Empleados.IdEmpleado = Pedidos.IdEmpleado)
+
+INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdPedido
+
+GROUP BY Empleados.IdEmpleado, Empleados.Nombre
+
+HAVING (COUNT([Detalles de pedidos].Cantidad)) > 1000
+
+ORDER BY Empleados.IdEmpleado, Empleados.Nombre DESC
+
+
+#################################################################################
+
+7. Cantidad de pedidos entre 100 y 200
+
+SELECT Empleados.IdEmpleado, Empleados.Nombre, COUNT([Detalles de pedidos].Cantidad) AS [TotalPedidosEmpleado], SUM([Detalles de pedidos].Cantidad) AS [TotalProductos]
+,SUM([Detalles de pedidos].Cantidad * [Detalles de pedidos].PrecioUnidad) AS [TotalVenta]
+
+FROM (Empleados
+
+INNER JOIN Pedidos ON Empleados.IdEmpleado = Pedidos.IdEmpleado)
+
+INNER JOIN [Detalles de pedidos] ON [Detalles de pedidos].IdPedido = Pedidos.IdPedido
+
+GROUP BY Empleados.IdEmpleado, Empleados.Nombre
+
+HAVING (COUNT([Detalles de pedidos].Cantidad)) > 100 AND (COUNT([Detalles de pedidos].Cantidad)) < 200
+
+ORDER BY Empleados.IdEmpleado, Empleados.Nombre DESC
+
 
