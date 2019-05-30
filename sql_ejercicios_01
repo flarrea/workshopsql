@@ -73,6 +73,7 @@ GROUP BY Empleados.IdEmpleado, Empleados.Nombre
 ORDER BY Empleados.IdEmpleado, Empleados.Nombre DESC
 
 #################################################################################
+* Uso de la cláusula HAVING para filtrar grupos
 
 5.El total de la venta mayor a 200000
 
