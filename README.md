@@ -83,11 +83,18 @@ Consulta SQL desde Excel:
 
 ######################################################################################
 
-Consulta SQL desde Excel a una Base de Dtaos SQL Server remota:
+Consulta SQL desde Excel a una Base de Datos SQL Server remota:
 
 ![Excel_DB_Remoto](https://user-images.githubusercontent.com/5190215/57332307-7e961780-70e8-11e9-9ccb-7fbda7c9bbad.gif)
 
 ######################################################################################
+
+Consulta SQL desde una Macro en Excel a una Base de Datos:
+
+![SQL_MacroExcel](https://user-images.githubusercontent.com/5190215/58884190-e91d8180-86ad-11e9-9de8-47a27693723e.gif)
+
+######################################################################################
+
 
 Ejemplos de Consultas SQL
 
