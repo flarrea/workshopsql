@@ -107,3 +107,9 @@ Ejemplos de Consultas SQL
 [SQL Precisiones para ms query](https://github.com/flarrea/workshopsql/blob/master/sql_precisiones_msquery)
 
 [SQL Subconsultas](https://github.com/flarrea/workshopsql/blob/master/sql_intermedios)
+
+[SQL Ejercicios 01](https://github.com/flarrea/workshopsql/blob/master/sql_ejercicios_01)
+
+[SQL Ejercicios_02](https://github.com/flarrea/workshopsql/blob/master/sql_ejercicios_02)
+
+
