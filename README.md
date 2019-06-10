@@ -110,6 +110,6 @@ Ejemplos de Consultas SQL
 
 [SQL Ejercicios 01](https://github.com/flarrea/workshopsql/blob/master/sql_ejercicios_01)
 
-[SQL Ejercicios_02](https://github.com/flarrea/workshopsql/blob/master/sql_ejercicios_02)
+[SQL Ejercicios 02](https://github.com/flarrea/workshopsql/blob/master/sql_ejercicios_02)
 
 
