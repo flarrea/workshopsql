@@ -1,0 +1,110 @@
+Problema: Determinar qué compañía de envíos reporta más utilidades para la empresa.
+
+#####################################################
+1. 
+
+SELECT Pedidos.IdPedido, Pedidos.CiudadDestinatario, [Compañías de envíos].NombreCompañía 
+
+FROM Pedidos
+
+INNER JOIN [Compañías de envíos] ON Pedidos.FormaEnvío = [Compañías de envíos].IdCompañíaEnvíos
+
+
+#####################################################
+2. 
+
+SELECT Pedidos.IdPedido, Pedidos.CiudadDestinatario, [Compañías de envíos].NombreCompañía, [Detalles de pedidos].Cantidad 
+
+FROM (Pedidos
+
+INNER JOIN [Compañías de envíos] ON Pedidos.FormaEnvío = [Compañías de envíos].IdCompañíaEnvíos)
+
+INNER JOIN [Detalles de pedidos] ON Pedidos.IdPedido = [Detalles de pedidos].IdPedido
+
+
+#####################################################
+3. 
+
+SELECT Pedidos.IdPedido, Pedidos.CiudadDestinatario, [Compañías de envíos].NombreCompañía, [Detalles de pedidos].Cantidad, [Detalles de pedidos].PrecioUnidad  
+
+FROM (Pedidos
+
+INNER JOIN [Compañías de envíos] ON Pedidos.FormaEnvío = [Compañías de envíos].IdCompañíaEnvíos)
+
+INNER JOIN [Detalles de pedidos] ON Pedidos.IdPedido = [Detalles de pedidos].IdPedido
+
+
+#####################################################
+4. 
+
+SELECT Pedidos.IdPedido, Pedidos.CiudadDestinatario, [Compañías de envíos].NombreCompañía, ([Detalles de pedidos].Cantidad * [Detalles de pedidos].PrecioUnidad) AS [Total]  
+
+FROM (Pedidos
+
+INNER JOIN [Compañías de envíos] ON Pedidos.FormaEnvío = [Compañías de envíos].IdCompañíaEnvíos)
+
+INNER JOIN [Detalles de pedidos] ON Pedidos.IdPedido = [Detalles de pedidos].IdPedido
+
+#####################################################
+5. 
+
+SELECT Pedidos.IdPedido, Pedidos.CiudadDestinatario, [Compañías de envíos].NombreCompañía, Count([Detalles de pedidos].Cantidad) AS [CantidadTotal]
+
+FROM (Pedidos
+
+INNER JOIN [Compañías de envíos] ON Pedidos.FormaEnvío = [Compañías de envíos].IdCompañíaEnvíos)
+
+INNER JOIN [Detalles de pedidos] ON Pedidos.IdPedido = [Detalles de pedidos].IdPedido
+
+
+GROUP BY Pedidos.IdPedido, Pedidos.CiudadDestinatario,[Compañías de envíos].NombreCompañía
+
+ORDER BY (COUNT([Detalles de pedidos].Cantidad)) DESC
+
+#####################################################
+6.
+
+SELECT Pedidos.IdPedido, Pedidos.CiudadDestinatario, [Compañías de envíos].NombreCompañía, Count([Detalles de pedidos].Cantidad) AS [CantidadTotal],SUM([Detalles de pedidos].Cantidad * [Detalles de pedidos].PrecioUnidad) AS [TotalVenta]  
+
+FROM (Pedidos
+
+INNER JOIN [Compañías de envíos] ON Pedidos.FormaEnvío = [Compañías de envíos].IdCompañíaEnvíos)
+
+INNER JOIN [Detalles de pedidos] ON Pedidos.IdPedido = [Detalles de pedidos].IdPedido
+
+GROUP BY Pedidos.IdPedido, Pedidos.CiudadDestinatario,[Compañías de envíos].NombreCompañía
+
+ORDER BY (COUNT([Detalles de pedidos].Cantidad)) DESC
+
+
+#####################################################
+7. 
+
+SELECT Pedidos.IdPedido,[Compañías de envíos].NombreCompañía, Count([Detalles de pedidos].Cantidad) AS [CantidadTotal],SUM([Detalles de pedidos].Cantidad * [Detalles de pedidos].PrecioUnidad) AS [TotalVenta]  
+
+FROM (Pedidos
+
+INNER JOIN [Compañías de envíos] ON Pedidos.FormaEnvío = [Compañías de envíos].IdCompañíaEnvíos)
+
+INNER JOIN [Detalles de pedidos] ON Pedidos.IdPedido = [Detalles de pedidos].IdPedido
+
+GROUP BY Pedidos.IdPedido,[Compañías de envíos].NombreCompañía
+
+ORDER BY (COUNT([Detalles de pedidos].Cantidad)) DESC
+
+
+#####################################################
+8. Solución:
+
+SELECT [Compañías de envíos].NombreCompañía, Count([Detalles de pedidos].Cantidad) AS [CantidadPedidosTotal],SUM([Detalles de pedidos].Cantidad * [Detalles de pedidos].PrecioUnidad) AS [TotalVentaEnvíos]  
+
+FROM (Pedidos
+
+INNER JOIN [Compañías de envíos] ON Pedidos.FormaEnvío = [Compañías de envíos].IdCompañíaEnvíos)
+
+INNER JOIN [Detalles de pedidos] ON Pedidos.IdPedido = [Detalles de pedidos].IdPedido
+
+GROUP BY [Compañías de envíos].NombreCompañía
+
+ORDER BY (COUNT([Detalles de pedidos].Cantidad)) DESC
+
